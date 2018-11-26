@@ -8,15 +8,22 @@
 		<meta http-equiv="Access-Control-Allow-Origin" content="*">
 		<title>Create New Task</title>
 
-		<link rel="stylesheet" href="bootstrap-4.1.3/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/page-style.css">
-		<link href="bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="bootstrap/bootstrap-4.1.3/css/bootstrap.min.css">
+		<link href="bootstrap/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="bootstrap/bootstrap-select/css/bootstrap-select.min.css" media="all" rel="stylesheet" type="text/css" />
+
 
 		<script src="jquery/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="bootstrap-fileinput/js/fileinput.js" />
-		<script src="bootstrap-fileinput/js/locales/th.js" type="text/javascript"></script>
-		<script src="bootstrap-fileinput/js/locales/zh.js" type="text/javascript"></script>
-		<script src="bootstrap-4.1.3/js/bootstrap.min.js"></script>
+		<script src="bootstrap/popper.min.js"></script>
+		<script type="text/javascript" src="bootstrap/bootstrap-fileinput/js/fileinput.js" />
+		<script src="bootstrap/bootstrap-fileinput/js/locales/th.js" type="text/javascript"></script>
+		<script src="bootstrap/bootstrap-fileinput/js/locales/zh.js" type="text/javascript"></script>
+		<script src="bootstrap/bootstrap-4.1.3/js/bootstrap.min.js"></script>
+		<script src="bootstrap/bootstrap-4.1.3/js/bootstrap.bundle.min.js"></script>
+		<script src="bootstrap/bootstrap-select/js/bootstrap-select.min.js"></script
+		<script src="bootstrap/bootstrap-select/js/i18n/defaults-zh_CN.min.js"></script>
+		
 
 		<style lang="scss" type="text/css"></style>
 	</head>
@@ -27,17 +34,17 @@
 				<div class="text-center" style="margin-top: 3%;">
 					<span class="text-center"><h3>Create New Task</h3></span></br>
 				</div>
-				<br>
+				</br>
 				<div class="input-group">
 					<span class="col-2">任务名:</span>
 					<input type="text" class="form-control" placeholder="">
 				</div>
-				<br>
+				</br>
 				<div class="input-group">
 					<span class="col-2">任务内容:</span>
 					<textarea class="form-control" rows="3" name=textarea value=。。></textarea>
 				</div>
-				<br>
+				</br>
 				<div class="input-group">
 					<span class="col-2">任务类型：</span>
 					<select class="selectpicker show-tick form-control" data-live-search="true">
@@ -46,7 +53,7 @@
 						<option>Others</option>
 					</select>
 				</div>
-				<br>
+				</br>
 				<div class="input-group">
 					<span class="col-2">任务等级：</span>
 					<select class="selectpicker show-tick form-control" data-live-search="true">
@@ -55,22 +62,24 @@
 						<option>Low</option>
 					</select>
 				</div>
-				<br>
+				</br>
 				<div class="input-group">
 					<span class="col-2">分配人：</span>
 					<select class="selectpicker show-tick form-control" data-live-search="true" id="roleID">
+						<option>请选择</option>
 						<!--<option>PM</option>
 						<option>BA</option>
 						<option>AD</option>
 						<option>ST</option>-->
 					</select>
+
 				</div>
-				<br>
+				</br>
 				<div class="input-group">
 					<span class="col-2">附件：</span>
 					<input id="f_upload" type="file" class="file" />
 				</div>
-				<br>
+				</br>
 				<div class="btn-group-lg text-center" style="margin-top: 3%;">
 					<button type="submit" class="btn btn-default">提交</button>
 				</div>
@@ -83,34 +92,22 @@
 
 <script>
 	$("#roleID").on('shown.bs.select', function(e) {
-		alert(1)
-		//为input绑定事件
-		$("#roleID").prev().find("input").keyup(function() {
-			alert(2)
-			//为input增加id属性，见下方截图
-			$("#roleID").prev().find("input").attr('id', "rolelist");
-			var orgname = $('#roleID').val().trim();
-			var data = {
-				'name': orgname
-			}
-			initOrglist($orgid, data);
-		})
+			initSelectList('roleID', 'http://localhost:8080/role/load');
 	});
 
-	function initSelectList() {
-		alert(3)
+	function initSelectList(objName, dataurl) {
 		$.ajax({
 			type: 'post',
-			//url: '/OrderTypeSetting/GetAllCanUseOrderTypes/',
+			url: dataurl,
 			async: false,
 			dataType: "Json",
 			success: function(data) {
 				if(null != data) {
 					var opstr = "";
 					$.each(data, function(i, n) {
-						opstr += " <option value=\"" + n.os_id + "\">" + n.os_name + "</option>";
+						opstr += " <option value=\"" + n.roleCode + "\">" + n.roleName + "</option>";
 					})
-					var myobj = document.getElementById('roleID');
+					var myobj = document.getElementById(objName);
 					if(myobj.options.length == 0) {
 						$("#" + myobj).html(opstr);
 						$("#" + myobj).selectpicker('refresh');
