@@ -25,7 +25,7 @@
 		<div class="page">
 			<form class="bs-example bs-example-form" role="form">
 				<div class="text-center" style="margin-top: 3%;">
-					<span class="text-center"><h3>Create New Task</h3></span></br>
+					<span class="text-center"><h3>Create My Timesheet</h3></span></br>
 				</div>
 				<br>
 				<div class="input-group">
@@ -40,7 +40,7 @@
 				<br>
 				<div class="input-group">
 					<span class="col-2">任务类型：</span>
-					<select class="selectpicker show-tick form-control" data-live-search="true">
+					<select class="selectpicker">
 						<option>CR</option>
 						<option>Issue</option>
 						<option>Others</option>
@@ -49,7 +49,7 @@
 				<br>
 				<div class="input-group">
 					<span class="col-2">任务等级：</span>
-					<select class="selectpicker show-tick form-control" data-live-search="true">
+					<select class="selectpicker">
 						<option>High</option>
 						<option>Middle</option>
 						<option>Low</option>
@@ -58,11 +58,11 @@
 				<br>
 				<div class="input-group">
 					<span class="col-2">分配人：</span>
-					<select class="selectpicker show-tick form-control" data-live-search="true" id="roleID">
-						<!--<option>PM</option>
+					<select class="selectpicker">
+						<option>PM</option>
 						<option>BA</option>
 						<option>AD</option>
-						<option>ST</option>-->
+						<option>ST</option>
 					</select>
 				</div>
 				<br>
@@ -81,43 +81,4 @@
 
 </html>
 
-<script>
-	$("#roleID").on('shown.bs.select', function(e) {
-		alert(1)
-		//为input绑定事件
-		$("#roleID").prev().find("input").keyup(function() {
-			alert(2)
-			//为input增加id属性，见下方截图
-			$("#roleID").prev().find("input").attr('id', "rolelist");
-			var orgname = $('#roleID').val().trim();
-			var data = {
-				'name': orgname
-			}
-			initOrglist($orgid, data);
-		})
-	});
-
-	function initSelectList() {
-		alert(3)
-		$.ajax({
-			type: 'post',
-			//url: '/OrderTypeSetting/GetAllCanUseOrderTypes/',
-			async: false,
-			dataType: "Json",
-			success: function(data) {
-				if(null != data) {
-					var opstr = "";
-					$.each(data, function(i, n) {
-						opstr += " <option value=\"" + n.os_id + "\">" + n.os_name + "</option>";
-					})
-					var myobj = document.getElementById('roleID');
-					if(myobj.options.length == 0) {
-						$("#" + myobj).html(opstr);
-						$("#" + myobj).selectpicker('refresh');
-					}
-				}
-			}
-		})
-
-	}
-</script>
+<script></script>
