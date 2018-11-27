@@ -32,20 +32,17 @@
 		<div class="page">
 			<form class="bs-example bs-example-form" role="form">
 				<div class="text-center" style="margin-top: 3%;">
-					<span class="text-center"><h3>Create New Task</h3></span></br>
+					<span class="text-center"><h3>Create New Task</h3></span>
 				</div>
-				</br>
-				<div class="input-group">
+				<div class="input-group" style="margin-top: 3%;">
 					<span class="col-2">任务名:</span>
 					<input type="text" class="form-control" placeholder="">
 				</div>
-				</br>
-				<div class="input-group">
+				<div class="input-group" style="margin-top: 3%;">
 					<span class="col-2">任务内容:</span>
 					<textarea class="form-control" rows="3" name=textarea value=。。></textarea>
 				</div>
-				</br>
-				<div class="input-group">
+				<div class="input-group" style="margin-top: 3%;">
 					<span class="col-2">任务类型：</span>
 					<select class="selectpicker show-tick form-control" data-live-search="true">
 						<option>CR</option>
@@ -53,8 +50,7 @@
 						<option>Others</option>
 					</select>
 				</div>
-				</br>
-				<div class="input-group">
+				<div class="input-group" style="margin-top: 3%;">
 					<span class="col-2">任务等级：</span>
 					<select class="selectpicker show-tick form-control" data-live-search="true">
 						<option>High</option>
@@ -62,24 +58,17 @@
 						<option>Low</option>
 					</select>
 				</div>
-				</br>
-				<div class="input-group">
+				<div class="input-group" style="margin-top: 3%;">
 					<span class="col-2">分配人：</span>
 					<select class="selectpicker show-tick form-control" data-live-search="true" id="roleID">
-						<option>请选择</option>
-						<!--<option>PM</option>
-						<option>BA</option>
-						<option>AD</option>
-						<option>ST</option>-->
+						<option value="000">请选择</option>
 					</select>
 
 				</div>
-				</br>
-				<div class="input-group">
+				<div class="input-group" style="margin-top: 3%;">
 					<span class="col-2">附件：</span>
 					<input id="f_upload" type="file" class="file" />
 				</div>
-				</br>
 				<div class="btn-group-lg text-center" style="margin-top: 3%;">
 					<button type="submit" class="btn btn-default">提交</button>
 				</div>
@@ -92,25 +81,28 @@
 
 <script>
 	$("#roleID").on('shown.bs.select', function(e) {
-			initSelectList('roleID', 'http://localhost:8080/role/load');
+			initSelectList('roleID', 'http://localhost:8080/references/load','role');
 	});
 
-	function initSelectList(objName, dataurl) {
+	function initSelectList(objName, dataurl,type) {
 		$.ajax({
 			type: 'post',
 			url: dataurl,
 			async: false,
+			data: {
+				"type": type
+			}, //参数值,键值对
 			dataType: "Json",
 			success: function(data) {
 				if(null != data) {
 					var opstr = "";
 					$.each(data, function(i, n) {
-						opstr += " <option value=\"" + n.roleCode + "\">" + n.roleName + "</option>";
+						opstr += " <option value=\"" + n.code + "\">" + n.name + "</option>";
 					})
 					var myobj = document.getElementById(objName);
-					if(myobj.options.length == 0) {
-						$("#" + myobj).html(opstr);
-						$("#" + myobj).selectpicker('refresh');
+					if(myobj.options.length == 1) {
+						$("#" + objName).html(opstr);
+						$("#" + objName).selectpicker('refresh');
 					}
 				}
 			}
