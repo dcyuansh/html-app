@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+
+		
+		<link rel="stylesheet" href="css/page-style.css">
+		<link rel="stylesheet" href="bootstrap/bootstrap-4.1.3/css/bootstrap.min.css">
+		<link href="bootstrap/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="bootstrap/bootstrap-select/css/bootstrap-select.min.css" media="all" rel="stylesheet" type="text/css" />
+
+
+		<script src="jquery/jquery-3.3.1.min.js"></script>
+		<script src="bootstrap/popper.min.js"></script>
+		<script src="bootstrap/bootstrap-4.1.3/js/bootstrap.min.js"></script>
+		<script src="bootstrap/bootstrap-4.1.3/js/bootstrap.bundle.min.js"></script>
+		<script src="bootstrap/bootstrap-select/js/bootstrap-select.min.js"></script>
+		<script src="bootstrap/bootstrap-select/js/i18n/defaults-zh_CN.min.js"></script>
+
+		<title>Create My Timesheet</title>
+		<style lang="scss" type="text/css">
+			table {
+				min-height: 100%;
+			}
+			th{
+				width:3%;
+			}
+			td{
+				width:3%;
+			}
+		</style>
+		
+		
+
+		<script>
+			var rows = 1;
+			function addrows() {
+				var daynumber = 1
+				var trElement = document.createElement("tr");
+				var td1Element = document.createElement("td");
+				var td2Element = document.createElement("td");
+				var td3Element = document.createElement("td");
+				var td4Element = document.createElement("td");
+				var td5Element = document.createElement("td");
+				var td6Element = document.createElement("td");
+				var td7Element = document.createElement("td");
+				var td8Element = document.createElement("td");
+				var td9Element = document.createElement("td");
+				var td10Element = document.createElement("td");
+				var td11Element = document.createElement("td");
+				var td12Element = document.createElement("td");
+				var td13Element = document.createElement("td");
+				var td14Element = document.createElement("td");
+				var td15Element = document.createElement("td");
+				var td16Element = document.createElement("td");
+				var td17Element = document.createElement("td");
+				var td18Element = document.createElement("td");
+				var td19Element = document.createElement("td");
+				var td20Element = document.createElement("td");
+				var td21Element = document.createElement("td");
+				var td22Element = document.createElement("td");
+				var td23Element = document.createElement("td");
+				var td24Element = document.createElement("td");
+				var td25Element = document.createElement("td");
+				var td26Element = document.createElement("td");
+				var td27Element = document.createElement("td");
+				var td28Element = document.createElement("td");
+				var td29Element = document.createElement("td");
+				var td30Element = document.createElement("td");
+				var td31Element = document.createElement("td");
+				var td32Element = document.createElement("td");
+				var td33Element = document.createElement("td");
+
+
+/*				td1Element.innerHTML = "<span><select style='width: 100px' class='selectpicker show-tick form-control' data-live-search='true' id='ticketID'><option>请选择</option></select></span>";
+*/				td1Element.innerHTML = "<select style='width: 100px' class='show-tick form-control' data-live-search='true' id='ticketID'><option>请选择</option></select>";
+				td2Element.innerHTML = " <input required style='width: 30px' name=\"day" + daynumber + "\"> ";
+				daynumber ++;
+				td3Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td4Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td5Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td6Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td7Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td8Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td9Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td10Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td11Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td12Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td13Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td14Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td15Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td16Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td17Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td18Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td19Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td20Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td21Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td22Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td23Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td24Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td25Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td26Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td27Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td28Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td29Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td30Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td31Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				daynumber ++;
+				td32Element.innerHTML = " <input style='width: 30px' name=\"day" + daynumber + "\">";
+				td33Element.innerHTML = " <input type='button' value='删除当前行' class='btn btn-danger' onclick='delrow(this)'>";
+				
+				
+				trElement.appendChild(td1Element);
+				trElement.appendChild(td2Element);
+				trElement.appendChild(td3Element);
+				trElement.appendChild(td4Element);
+				trElement.appendChild(td5Element);
+				trElement.appendChild(td6Element);
+				trElement.appendChild(td7Element);
+				trElement.appendChild(td8Element);
+				trElement.appendChild(td9Element);
+				trElement.appendChild(td10Element);
+				trElement.appendChild(td11Element);
+				trElement.appendChild(td12Element);
+				trElement.appendChild(td13Element);
+				trElement.appendChild(td14Element);
+				trElement.appendChild(td15Element);
+				trElement.appendChild(td16Element);
+				trElement.appendChild(td17Element);
+				trElement.appendChild(td18Element);
+				trElement.appendChild(td19Element);
+				trElement.appendChild(td20Element);
+				trElement.appendChild(td21Element);
+				trElement.appendChild(td22Element);
+				trElement.appendChild(td23Element);
+				trElement.appendChild(td24Element);
+				trElement.appendChild(td25Element);
+				trElement.appendChild(td26Element);
+				trElement.appendChild(td27Element);
+				trElement.appendChild(td28Element);
+				trElement.appendChild(td29Element);
+				trElement.appendChild(td30Element);
+				trElement.appendChild(td31Element);
+				trElement.appendChild(td32Element);
+				trElement.appendChild(td33Element);
+				var tbody = document.getElementById("tb");
+				tbody.appendChild(trElement);
+				rows++;
+			}
+
+			function delrow(obj) {
+				//获取按钮所在的行
+				btnTrElement = obj.parentNode.parentNode;
+				//alert(btnTrElement.nodeName);
+				//获取按钮所在的行的上一级也就是TBODY
+				tbodyElemement = btnTrElement.parentNode;
+				//通过tobody干掉tr
+				tbodyElemement.removeChild(btnTrElement);
+			}
+		</script>
+	</head>
+
+	<body>
+		<form>
+			<div class="text-center" style="margin-top: 3%;margin-bottom: 3%;">
+				<span class="text-center"><h3>Create My Timesheet</h3></span>
+			</div>
+			<table class="table table-responsive table-striped table-bordered" id="table">
+
+				<thead>
+				<tr>
+					<th class="text-right">
+						<span class="col-1">
+						   <select class="selectpicker show-tick form-control" data-live-search="true">
+								<option>1月</option>
+								<option>2月</option>
+								<option>3月</option>
+								<option>4月</option>
+								<option>5月</option>
+								<option>6月</option>
+								<option>7月</option>
+								<option>8月</option>
+								<option>9月</option>
+								<option>10月</option>
+								<option>11月</option>
+								<option>12月</option>
+							</select>
+						</span>
+					</th>
+					<th>1 </th>
+					<th>2 </th>
+					<th>3 </th>
+					<th>4 </th>
+					<th>5 </th>
+					<th>6 </th>
+					<th>7 </th>
+					<th>8 </th>
+					<th>9 </th>
+					<th>10</th>
+					<th>11</th>
+					<th>12</th>
+					<th>13</th>
+					<th>14</th>
+					<th>15</th>
+					<th>16</th>
+					<th>17</th>
+					<th>18</th>
+					<th>19</th>
+					<th>20</th>
+					<th>21</th>
+					<th>22</th>
+					<th>23</th>
+					<th>24</th>
+					<th>25</th>
+					<th>26</th>
+					<th>27</th>
+					<th>28</th>
+					<th>29</th>
+					<th>30</th>
+					<th>31</th>
+					<th>操作</th>
+				</tr>
+				</thead>
+				<tbody id="tb">
+					<!--
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>-->
+				</tbody>
+				<tfoot style="margin-bottom: 5%;">
+					<tr>
+						<td align="center" colspan="33">
+							<input class="btn btn-info" type="submit" value="哦了提交">
+							<button class="btn btn-primary" onclick="addrows()">添加一行</button>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</form>
+	</body>
+
+</html>
+
+
+<script>
+	$("#ticketID").on('shown.bs.select', function(e) {
+			initSelectList('ticketID', 'http://localhost:8080/references/load','role');
+	});
+
+	function initSelectList(objName, dataurl,type) {
+		$.ajax({
+			type: 'post',
+			url: dataurl,
+			async: false,
+			data: {
+				"type": type
+			}, //参数值,键值对
+			dataType: "Json",
+			success: function(data) {
+				if(null != data) {
+					var opstr = "";
+					$.each(data, function(i, n) {
+						opstr += " <option value=\"" + n.code + "\">" + n.name + "</option>";
+					})
+					var myobj = document.getElementById(objName);
+					if(myobj.options.length == 1) {
+						$("#" + objName).html(opstr);
+						$("#" + objName).selectpicker('refresh');
+					}
+				}
+			}
+		})
+
+	}
+</script>
