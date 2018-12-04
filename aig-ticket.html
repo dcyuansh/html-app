@@ -80,7 +80,6 @@
 			<table id="aigTicketListTable"></table>
 		</div>
 
-
 		<!--新增,编辑信息-->
 		<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
 			<div class="modal-dialog" role="document">
@@ -105,11 +104,17 @@
 						</div>
 						<div class="form-group">
 							<label for="txt_statu">Description</label>
-							<textarea class="form-control" rows="3"name="editForm.issue_description"></textarea>
-						</div>				
+							<textarea class="form-control" rows="3" name="editForm.issue_description"></textarea>
+						</div>
 						<div class="form-group">
 							<label for="txt_statu">Status</label>
-							<input type="text" name="editForm.status" class="form-control" id="txt_statu" placeholder="Enter status">
+							<select class="selectpicker show-tick form-control" name="editForm.status" data-live-search="true">
+								<option value="Pending for BA Initial Process">Pending for BA Initial Process</option>
+								<option value="Pending for BA Construction Process">Pending for BA Construction Process</option>
+								<option value="In progress">In progress</option>
+								<option value="Resolved">Resolved</option>
+								<option value="Closed">Closed</option>
+							</select>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -127,8 +132,7 @@
 
 <script>
 	$(function() {
-		var columns = [
-			{
+		var columns = [{
 				title: 'ID',
 				field: 'id',
 				align: 'center',
@@ -251,7 +255,6 @@
 	function onSerachUser() {
 		$("#aigTicketListTable").bootstrapTable('refresh');
 	}
-
 
 	//更新弹框
 	function onEditUser(id) {
