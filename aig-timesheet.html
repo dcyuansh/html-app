@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="bootstrap/bootstrap-4.1.3/css/bootstrap.min.css">
 		<link rel="stylesheet" href="bootstrap/bootstrap-table/dist/bootstrap-table.css">
 		<link rel="stylesheet" href="bootstrap/open-iconic/font/css/open-iconic-bootstrap.min.css">
+		<link href="bootstrap/bootstrap-select/css/bootstrap-select.min.css" media="all" rel="stylesheet" type="text/css" />
 
 		<script src="jquery/jquery-3.3.1.min.js"></script>
 		<script src="bootstrap/bootstrap-4.1.3/js/bootstrap.bundle.min.js"></script>
@@ -18,6 +19,9 @@
 
 		<script src="bootstrap/bootstrap-table/dist/bootstrap-table.js"></script>
 		<script src="bootstrap/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+		<script src="bootstrap/popper.min.js"></script>
+		<script src="bootstrap/bootstrap-select/js/bootstrap-select.min.js"></script>
+		<script src="bootstrap/bootstrap-select/js/i18n/defaults-zh_CN.min.js"></script>
 
 		<style lang="scss" type="text/css">
 			$font-size-base: 0.8rem;
@@ -140,12 +144,16 @@
 
 						<div class="form-group">
 							<label for="txt_departmentname">Application no</label>
-							<input type="text" name="addForm.application_no" class="form-control" placeholder="Enter application no">
+							<!--<input type="text" name="addForm.application_no" class="form-control" placeholder="Enter application no">-->
+							<select class="selectpicker show-tick form-control" name="addForm.application_no" data-live-search="true" id="roleID">
+								<option>请选择</option>
+							</select>
 						</div>
 
 						<div class="form-group">
 							<label for="txt_statu">Year</label>
 							<select class="selectpicker show-tick form-control" name="addForm.year" data-live-search="true">
+								<option value="2017">2017</option>
 								<option value="2018">2018</option>
 								<option value="2019">2019</option>
 								<option value="2020">2020</option>
@@ -258,35 +266,107 @@
 
 						<div class="form-group">
 							<label for="txt_departmentname">Application no</label>
-							<input type="text" name="editForm.application_no" class="form-control" placeholder="Enter application no" disabled>
+							<input type="text" name="editForm.application_no" class="form-control" placeholder="Enter application no" disabled="true">
 						</div>
+
 						<div class="form-group">
-							<label for="txt_parentdepartment">Estimated</label>
-							<input type="text" name="editForm.estimated_effort" class="form-control required" placeholder="Enter estimated effort" disabled>
-						</div>
-						<div class="form-group">
-							<label for="txt_departmentlevel">Actual effort</label>
-							<input type="text" name="editForm.actual_effort" class="form-control" placeholder="Enter actual effort">
-						</div>
-						<div class="form-group">
-							<label for="txt_statu">Description</label>
-							<textarea class="form-control" rows="3" name="editForm.issue_description"></textarea>
-						</div>
-						<div class="form-group">
-							<label for="txt_statu">Status</label>
-							<select class="selectpicker show-tick form-control" name="editForm.status" data-live-search="true">
-								<option value="Pending for BA Initial Process">Pending for BA Initial Process</option>
-								<option value="Pending for BA Construction Process">Pending for BA Construction Process</option>
-								<option value="In progress">In progress</option>
-								<option value="Resolved">Resolved</option>
-								<option value="Closed">Closed</option>
+							<label for="txt_statu">Year</label>
+							<select class="selectpicker show-tick form-control" name="editForm.year" data-live-search="true" disabled="true">
+								<option value="2018">2018</option>
+								<option value="2019">2019</option>
+								<option value="2020">2020</option>
 							</select>
 						</div>
+
+						<div class="form-group">
+							<label for="txt_statu">Month</label>
+							<select class="selectpicker show-tick form-control" name="editForm.month" data-live-search="true" disabled="true">
+								<option value="1">1月</option>
+								<option value="2">2月</option>
+								<option value="3">3月</option>
+								<option value="4">4月</option>
+								<option value="5">5月</option>
+								<option value="6">6月</option>
+								<option value="7">7月</option>
+								<option value="8">8月</option>
+								<option value="9">9月</option>
+								<option value="10">10月</option>
+								<option value="11">11月</option>
+								<option value="12">12月</option>
+							</select>
+						</div>
+
+						<label>工时:</label>
+						<div class="form-group">
+							<label class="form-label" style="width: 5%;">1.</label>
+							<input type="text" name="editForm.day1" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">2.</label>
+							<input type="text" name="editForm.day2" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">3.</label>
+							<input type="text" name="editForm.day3" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">4.</label>
+							<input type="text" name="editForm.day4" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">5.</label>
+							<input type="text" name="editForm.day5" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">6.</label>
+							<input type="text" name="editForm.day6" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">7.</label>
+							<input type="text" name="editForm.day7" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">8.</label>
+							<input type="text" name="editForm.day8" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">9.</label>
+							<input type="text" name="editForm.day9" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">10.</label>
+							<input type="text" name="editForm.day10" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">11.</label>
+							<input type="text" name="editForm.day11" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">12.</label>
+							<input type="text" name="editForm.day12" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">13.</label>
+							<input type="text" name="editForm.day13" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">14.</label>
+							<input type="text" name="editForm.day14" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">15.</label>
+							<input type="text" name="editForm.day15" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">16.</label>
+							<input type="text" name="editForm.day16" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">17.</label>
+							<input type="text" name="editForm.day17" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">18.</label>
+							<input type="text" name="editForm.day18" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">19.</label>
+							<input type="text" name="editForm.day19" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">20.</label>
+							<input type="text" name="editForm.day20" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">21.</label>
+							<input type="text" name="editForm.day21" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">22.</label>
+							<input type="text" name="editForm.day22" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">23.</label>
+							<input type="text" name="editForm.day23" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">24.</label>
+							<input type="text" name="editForm.day24" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">25.</label>
+							<input type="text" name="editForm.day25" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">26.</label>
+							<input type="text" name="editForm.day26" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">27.</label>
+							<input type="text" name="editForm.day27" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">28.</label>
+							<input type="text" name="editForm.day28" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">29.</label>
+							<input type="text" name="editForm.day29" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">30.</label>
+							<input type="text" name="editForm.day30" style="width: 90%;">
+							<label class="form-label" style="width: 5%;">31.</label>
+							<input type="text" name="editForm.day31" style="width: 90%;">
+						</div>
 					</div>
+
 					<div class="modal-footer">
 						<input type="hidden" id="editId" />
 						<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Cancel</button>
-						<button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal" onclick="onEditUserSubmit()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Save</button>
+						<button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal" onclick="onEditAigTimesheetSubmit()"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Save</button>
 					</div>
 				</div>
 			</div>
@@ -486,7 +566,7 @@
 				field: 'id',
 				align: 'center',
 				formatter: function(value, row, index) {
-					var e = '<button href="#" class="btn btn-primary"  onclick="onEditUser(\'' + row.id + '\')">Edit</button> ';
+					var e = '<button href="#" class="btn btn-primary"  onclick="onEditAigTimesheet(\'' + row.id + '\')">Edit</button> ';
 					var d = '<button href="#" class="btn btn-danger"   onclick="onDeleteAigTimesheet(\'' + row.id + '\')">Delete</button> ';
 					return e + d;
 				}
@@ -560,7 +640,30 @@
 	}
 	//新增弹框
 	function onAddTimesheet() {
-		$('#addModal').modal();
+		/*$('#addModal').modal();*/
+		$.ajax({
+			url: "http://localhost:8080/aig/timesheet/initAddParameter ", //请求的url地址
+			dataType: "json", //返回格式为json
+			async: false, //请求是否异步，默认为异步，这也是ajax重要特性
+			data: {}, //参数值,键值对
+			type: "POST", //请求方式
+			beforeSend: function() {
+				//请求前的处理
+			},
+			success: function(req) {
+				//请求成功处理
+				$("*[name='addForm.year']").selectpicker('val', req.rows.year);
+				$("*[name='addForm.month']").selectpicker('val', req.rows.month);
+			},
+			complete: function() {
+				//请求完成的处理
+				$('#addModal').modal();
+			},
+			error: function() {
+				//请求出错处理
+			}
+		});
+	
 	}
 
 	//新增提交
@@ -570,7 +673,7 @@
 			dataType: "json", //返回格式为json
 			async: false, //请求是否异步，默认为异步，这也是ajax重要特性
 			data: {
-				application_no: $("*[name='addForm.application_no']").val(), 
+				application_no: $("*[name='addForm.application_no']").val(),
 				year: $("*[name='addForm.year']").val(),
 				month: $("*[name='addForm.month']").val(),
 				day1: $("*[name='addForm.day1']").val(),
@@ -613,7 +716,6 @@
 				//请求成功处理
 			},
 			complete: function() {
-				alert(12)
 				//请求完成的处理
 				//刷新bootstrap table数据
 				$("#aigTimesheetListTable").bootstrapTable('refresh');
@@ -658,9 +760,9 @@
 	}
 
 	//更新弹框
-	function onEditUser(id) {
+	function onEditAigTimesheet(id) {
 		$.ajax({
-			url: "http://localhost:8080/aig/ticket/loadDetail", //请求的url地址
+			url: "http://localhost:8080/aig/timesheet/loadDetail", //请求的url地址
 			dataType: "json", //返回格式为json
 			async: false, //请求是否异步，默认为异步，这也是ajax重要特性
 			data: {
@@ -674,11 +776,43 @@
 				//请求成功处理
 				$("#editModalLabel").text("Edit timesheet");
 				$('#editId').val(req.rows.id); //给会话中的隐藏属性deleteId赋值
+				$("*[name='editForm.user_name']").val(req.rows.user_name);
 				$("*[name='editForm.application_no']").val(req.rows.application_no);
-				$("*[name='editForm.estimated_effort']").val(req.rows.estimated_effort);
-				$("*[name='editForm.actual_effort']").val(req.rows.actual_effort);
-				$("*[name='editForm.issue_description']").val(req.rows.issue_description);
-				$("*[name='editForm.status']").val(req.rows.status);
+				//$("*[name='editForm.year']").val(req.rows.year);
+				//$("*[name='editForm.month']").val(req.rows.month);
+				$("*[name='editForm.year']").selectpicker('val', req.rows.year);
+				$("*[name='editForm.month']").selectpicker('val', req.rows.month);
+				$("*[name='editForm.day1']").val(req.rows.day1);
+				$("*[name='editForm.day2']").val(req.rows.day2);
+				$("*[name='editForm.day3']").val(req.rows.day3);
+				$("*[name='editForm.day4']").val(req.rows.day4);
+				$("*[name='editForm.day5']").val(req.rows.day5);
+				$("*[name='editForm.day6']").val(req.rows.day6);
+				$("*[name='editForm.day7']").val(req.rows.day7);
+				$("*[name='editForm.day8']").val(req.rows.day8);
+				$("*[name='editForm.day9']").val(req.rows.day9);
+				$("*[name='editForm.day10']").val(req.rows.day10);
+				$("*[name='editForm.day11']").val(req.rows.day11);
+				$("*[name='editForm.day12']").val(req.rows.day12);
+				$("*[name='editForm.day13']").val(req.rows.day13);
+				$("*[name='editForm.day14']").val(req.rows.day14);
+				$("*[name='editForm.day15']").val(req.rows.day15);
+				$("*[name='editForm.day16']").val(req.rows.day16);
+				$("*[name='editForm.day17']").val(req.rows.day17);
+				$("*[name='editForm.day18']").val(req.rows.day18);
+				$("*[name='editForm.day19']").val(req.rows.day19);
+				$("*[name='editForm.day20']").val(req.rows.day20);
+				$("*[name='editForm.day21']").val(req.rows.day21);
+				$("*[name='editForm.day22']").val(req.rows.day22);
+				$("*[name='editForm.day23']").val(req.rows.day23);
+				$("*[name='editForm.day24']").val(req.rows.day24);
+				$("*[name='editForm.day25']").val(req.rows.day25);
+				$("*[name='editForm.day26']").val(req.rows.day26);
+				$("*[name='editForm.day27']").val(req.rows.day27);
+				$("*[name='editForm.day28']").val(req.rows.day28);
+				$("*[name='editForm.day29']").val(req.rows.day29);
+				$("*[name='editForm.day30']").val(req.rows.day30);
+				$("*[name='editForm.day31']").val(req.rows.day31);
 			},
 			complete: function() {
 				//请求完成的处理
@@ -691,16 +825,48 @@
 	}
 
 	//更新提交
-	function onEditUserSubmit() {
+	function onEditAigTimesheetSubmit() {
 		$.ajax({
-			url: "http://localhost:8080/aig/ticket/update", //请求的url地址
+			url: "http://localhost:8080/aig/timesheet/update", //请求的url地址
 			dataType: "json", //返回格式为json
 			async: false, //请求是否异步，默认为异步，这也是ajax重要特性
 			data: {
 				"id": $.trim($("#editId").val()),
-				actual_effort: $("*[name='editForm.actual_effort']").val(),
-				issue_description: $("*[name='editForm.issue_description']").val(),
-				status: $("*[name='editForm.status']").val()
+				user_name: $("*[name='editForm.user_name']").val(),
+				application_no: $("*[name='editForm.application_no']").val(),
+				year: $("*[name='editForm.year']").val(),
+				month: $("*[name='editForm.month']").val(),
+				day1: $("*[name='editForm.day1']").val(),
+				day2: $("*[name='editForm.day2']").val(),
+				day3: $("*[name='editForm.day3']").val(),
+				day4: $("*[name='editForm.day4']").val(),
+				day5: $("*[name='editForm.day5']").val(),
+				day6: $("*[name='editForm.day6']").val(),
+				day7: $("*[name='editForm.day7']").val(),
+				day8: $("*[name='editForm.day8']").val(),
+				day9: $("*[name='editForm.day9']").val(),
+				day10: $("*[name='editForm.day10']").val(),
+				day11: $("*[name='editForm.day11']").val(),
+				day12: $("*[name='editForm.day12']").val(),
+				day13: $("*[name='editForm.day13']").val(),
+				day14: $("*[name='editForm.day14']").val(),
+				day15: $("*[name='editForm.day15']").val(),
+				day16: $("*[name='editForm.day16']").val(),
+				day17: $("*[name='editForm.day17']").val(),
+				day18: $("*[name='editForm.day18']").val(),
+				day19: $("*[name='editForm.day19']").val(),
+				day20: $("*[name='editForm.day20']").val(),
+				day21: $("*[name='editForm.day21']").val(),
+				day22: $("*[name='editForm.day22']").val(),
+				day23: $("*[name='editForm.day23']").val(),
+				day24: $("*[name='editForm.day24']").val(),
+				day25: $("*[name='editForm.day25']").val(),
+				day26: $("*[name='editForm.day26']").val(),
+				day27: $("*[name='editForm.day27']").val(),
+				day28: $("*[name='editForm.day28']").val(),
+				day29: $("*[name='editForm.day29']").val(),
+				day30: $("*[name='editForm.day30']").val(),
+				day31: $("*[name='editForm.day31']").val()
 			}, //参数值,键值对
 			type: "POST", //请求方式
 			beforeSend: function() {
@@ -718,5 +884,34 @@
 				//请求出错处理
 			}
 		});
+	}
+
+	$("#roleID").on('shown.bs.select', function(e) {
+		initSelectList('roleID', 'http://localhost:8080/aig/ticket/loadAllAigTicket', 'role');
+	});
+
+	function initSelectList(objName, dataurl, type) {
+		$.ajax({
+			type: 'post',
+			url: dataurl,
+			async: false,
+			data: {
+				"type": type
+			}, //参数值,键值对
+			dataType: "Json",
+			success: function(data) {
+				if(null != data) {
+					var opstr = "<option value=\"休假\">休假</option>";
+					$.each(data, function(i, n) {
+						opstr += " <option value=\"" + n.application_no + "\">" + n.application_no + "</option>";
+					})
+					var myobj = document.getElementById(objName);
+					if(myobj.options.length == 1) {
+						$("#" + objName).html(opstr);
+						$("#" + objName).selectpicker('refresh');
+					}
+				}
+			}
+		})
 	}
 </script>
