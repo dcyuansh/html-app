@@ -19,6 +19,11 @@
 		<script src="bootstrap/bootstrap-table/dist/bootstrap-table.js"></script>
 		<script src="bootstrap/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
 
+		<script src="bootstrap/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"></script>
+		<script src="bootstrap/bootstrap-table/dist/extensions/bootstrap-table-export/tableExport.js"></script>
+		<script src="bootstrap/bootstrap-table/dist/extensions/bootstrap-table-export/js-xlsx/xlsx.core.min.js"></script>
+		<script src="bootstrap/bootstrap-table/dist/extensions/bootstrap-table-export/FileSaver/FileSaver.min.js"></script>
+
 		<style lang="scss" type="text/css">
 			$font-size-base: 0.8rem;
 			$body-bg: rgb(249, 249, 249);
@@ -145,11 +150,12 @@
 
 <script>
 	$(function() {
-		var columns = [{
-				checkbox: true,
-				align: 'center',
-				valign: 'middle',
-			},
+		var columns = [
+			/*{
+							checkbox: true,
+							align: 'center',
+							valign: 'middle',
+						},*/
 			{
 				title: 'ID',
 				field: 'id',
@@ -207,7 +213,7 @@
 			//contentType: "application/x-json",
 			striped: true, //隔行变色
 			cache: false, //是否使用缓存
-			showColumns: false, // 列
+			showColumns: true, // 列
 			//toobar:'#toolbar',
 			pagination: true, //分页
 			paginationLoop: false,
@@ -227,6 +233,19 @@
 			pageList: [5, 8, 10, 25, 50, 100],
 			undefinedText: '--',
 			uniqueId: "id", //每一行的唯一标识，一般为主键列
+
+			showExport: true,
+			exportDataType: 'all',
+			//exportTypes:[ 'csv', 'txt', 'sql', 'doc', 'excel', 'xlsx', 'pdf'],  //导出文件类型	
+			exportTypes: ['excel', 'xlsx'],
+			/*Icons:'glyphicon-export',*/
+			exportOptions: { //ignoreColumn: [0,0],                       
+				fileName: '数据导出', //文件名称设置          
+				worksheetName: 'Sheet1', //表格工作区名称           
+				tableName: '',
+				excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
+			},
+
 			queryParamsType: '',
 			queryParams: queryParams, //传递参数（*）
 			columns: columns,
