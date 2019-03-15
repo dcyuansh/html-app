@@ -42,7 +42,7 @@
 						<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3  float-left">
 							<span class="control-label">Report Type</span>
 							<div class="controls form-inline">
-								<select class="selectpicker show-tick form-control" multiple  name="searchForm.reportType" data-live-search="true" style="width: 95%;margin-top: 3%;" >
+								<select class="selectpicker show-tick form-control" id ="reportType" name="searchForm.reportType" data-live-search="true" style="width: 95%;margin-top: 3%;">
 									<option value="Create">Create</option>
 									<option value="Close">Close</option>
 									<option value="Assign">Assign</option>
@@ -58,6 +58,7 @@
 							<div class="controls form-inline">
 								<select class="selectpicker show-tick form-control" name="searchForm.year" data-live-search="true" style="width: 95%;margin-top: 3%;">
 									<option>请选择年份</option>
+									<option value="2017">2017</option>
 									<option value="2018">2018</option>
 									<option value="2019">2019</option>
 									<option value="2020">2020</option>
@@ -84,7 +85,7 @@
 								</select>
 							</div>
 						</div>
-							<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3  float-left">
+						<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3  float-left">
 							<span class="control-label">Months Of Data</span>
 							<div class="controls form-inline">
 								<select class="selectpicker show-tick form-control" name="searchForm.monthCount" data-live-search="true" style="width: 95%;margin-top: 3%;">
@@ -116,9 +117,8 @@
 		</form>
 		<!--查询结果-->
 		<div class="card-body text-left ">
-			<table id="aigTicketListTable"></table>
+			<table id="ticketReportListTable"></table>
 		</div>
-
 
 	</body>
 
@@ -126,8 +126,7 @@
 
 <script>
 	$(function() {
-		var columns = [
-			{
+		var columns = [{
 				title: 'Month',
 				field: 'month',
 				align: 'center',
@@ -162,13 +161,13 @@
 				field: 'openCount',
 				align: 'center',
 				valign: 'middle',
-			},	
+			},
 			{
 				title: 'Wip',
 				field: 'wipCount',
 				align: 'center',
 				valign: 'middle',
-			}	
+			}
 			/*{
 				title: 'Actions',
 				field: 'id',
@@ -183,8 +182,8 @@
 	});
 
 	function onQuery(columns) {
-		var dataurl = 'http://localhost:8080/aig/timesheet/summary/load'
-		$('#aigTicketListTable').bootstrapTable({
+		var dataurl = 'http://localhost:8080/aig/report/load'
+		$('#ticketReportListTable').bootstrapTable({
 			url: dataurl,
 			idePagination: "server",
 			method: "POST",
@@ -209,8 +208,8 @@
 			showRefresh: false, //是否显示刷新按钮
 			sidePagination: "server", //服务端处理分页
 			pageNumber: 1,
-			pageSize: 8,
-			pageList: [5, 8, 10, 25, 50, 100],
+			pageSize: 12,
+			pageList: [5, 12, 200, 25, 50, 100],
 			undefinedText: '--',
 			uniqueId: "id", //每一行的唯一标识，一般为主键列
 			queryParamsType: '',
@@ -229,12 +228,14 @@
 
 		//得到查询的参数
 		function queryParams(params) {
+		
 			var temp = { //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
 				pageSize: params.pageSize, //页面大小
 				pageNumber: params.pageNumber, //页码
-				user_name: $("*[name='searchForm.user_name']").val(), //后台请求传的查询参数
+				reportType: $("*[name='searchForm.reportType']").val(), //后台请求传的查询参数
 				year: $("*[name='searchForm.year']").val(),
-				month: $("*[name='searchForm.month']").val()
+				month: $("*[name='searchForm.month']").val(),
+				monthCount: $("*[name='searchForm.monthCount']").val(),
 			};
 			return temp;
 		};
@@ -242,6 +243,6 @@
 
 	//搜索
 	function onSerach() {
-		$("#aigTicketListTable").bootstrapTable('refresh');
+		$("#ticketReportListTable").bootstrapTable('refresh');
 	}
 </script>
