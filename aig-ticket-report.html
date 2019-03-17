@@ -18,6 +18,13 @@
 
 		<script src="bootstrap/bootstrap-table/dist/bootstrap-table.js"></script>
 		<script src="bootstrap/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+		
+		
+		<script type="text/javascript" src="bootstrap/bootstrap-table/dist/extensions/export/bootstrap-table-export.js"></script>
+		<script type="text/javascript" src="bootstrap/bootstrap-table/dist/extensions/bootstrap-table-export/tableExport.js"></script>
+		<script type="text/javascript" src="bootstrap/bootstrap-table/dist/extensions/bootstrap-table-export/js-xlsx/xlsx.core.min.js"></script>
+		<script type="text/javascript" src="bootstrap/bootstrap-table/dist/extensions/bootstrap-table-export/FileSaver/FileSaver.min.js"></script>
+
 
 		<style lang="scss" type="text/css">
 			$font-size-base: 0.8rem;
@@ -208,10 +215,21 @@
 			showRefresh: false, //是否显示刷新按钮
 			sidePagination: "server", //服务端处理分页
 			pageNumber: 1,
-			pageSize: 12,
-			pageList: [5, 12, 200, 25, 50, 100],
+			pageSize: 24,
+			pageList: [12, 24],
 			undefinedText: '--',
 			uniqueId: "id", //每一行的唯一标识，一般为主键列
+			
+			showExport: true,
+			exportDataType: 'all',
+			exportTypes: ['excel', 'xlsx'], //导出文件类型
+			exportOptions: { //ignoreColumn: [0,0],
+				fileName: '数据导出', //文件名称设置
+				worksheetName: 'Sheet1', //表格工作区名称
+				tableName: '',
+				excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
+			},
+			
 			queryParamsType: '',
 			queryParams: queryParams, //传递参数（*）
 			columns: columns,
