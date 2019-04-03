@@ -93,7 +93,7 @@
 		<!-- page content -->
 		<div class="pageContent">
 			<!--<iframe src="main.html" id="mainFrame" name="mainFrame" frameborder="0" width="100%" onload="this.height=0;var fdh=(this.Document?this.Document.body.scrollHeight:this.contentDocument.body.offsetHeight);this.height=(fdh>600?fdh:600)"></iframe>-->
-			<iframe src="main.html" id="mainFrame" name="mainFrame" scrolling="no" onload="changeFrameHeight()" frameborder="0" width="100%"></iframe>
+			<iframe src="aig-ticket.html" id="mainFrame" name="mainFrame" onload="changeFrameHeight()" frameborder="0" width="100%"></iframe>
 		</div>
 
 		<!--page footer-->
@@ -111,13 +111,13 @@
 </html>
 
 
-<script>
-	function changeFrameHeight() {
-		alert(1)
-		var ifm = document.getElementById("mainFrame");
-		ifm.height = document.documentElement.clientHeight;
-	}
-	window.onresize = function() {
-		changeFrameHeight();
-	}
-</script>
+<script>function changeFrameHeight() {
+	var ifm=document.getElementById("mainFrame");
+	/*ifm.height = document.documentElement.clientHeight;*/
+	var fdh=document.documentElement.clientHeight;
+	ifm.height=fdh * 0.85>600 ? fdh * 0.85: 600;
+}
+
+window.onresize=function() {
+	changeFrameHeight();
+}</script>
