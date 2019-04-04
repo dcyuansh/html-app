@@ -58,10 +58,11 @@
 						</div>
 
 						<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3  float-left">
-							<span class="control-label">Year</span>
-							<div class="controls form-inline">
-								<select class="selectpicker show-tick form-control" name="searchForm.year" data-live-search="true" style="width: 95%;margin-top: 3%;">
+							<div class="form-group">
+								<label>Year</label>
+								<select class="show-tick form-control" name="searchForm.year" data-live-search="true">
 									<option>请选择年份</option>
+									<option value="2017">2017</option>
 									<option value="2018">2018</option>
 									<option value="2019">2019</option>
 									<option value="2020">2020</option>
@@ -69,9 +70,9 @@
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3  float-left">
-							<span class="control-label">Month</span>
-							<div class="controls form-inline">
-								<select class="selectpicker show-tick form-control" name="searchForm.month" data-live-search="true" style="width: 95%;margin-top: 3%;">
+							<div class="form-group">
+								<label>Month</label>
+								<select class="show-tick form-control" name="searchForm.month" data-live-search="true">
 									<option>请选择月份</option>
 									<option value="1">1月</option>
 									<option value="2">2月</option>
@@ -565,7 +566,7 @@
 				title: 'Modify Or Delete Operation',
 				field: 'id',
 				align: 'center',
-				
+
 				formatter: function(value, row, index) {
 					var e = '<button href="#" class="btn btn-primary"  onclick="onEditAigTimesheet(\'' + row.id + '\')">Edit</button> ';
 					var d = '<button href="#" class="btn btn-danger"   onclick="onDeleteAigTimesheet(\'' + row.id + '\')">Delete</button> ';
@@ -664,7 +665,7 @@
 				//请求出错处理
 			}
 		});
-	
+
 	}
 
 	//新增提交
